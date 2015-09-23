@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions {
+  string quickrpc_package = 98765;
+}
+
+extend google.protobuf.MessageOptions {
+  string quickrpc_message = 98766;
+}
