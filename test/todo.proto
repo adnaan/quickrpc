@@ -1,18 +1,17 @@
 syntax = "proto3";
-import "google/protobuf/descriptor.proto";
+import "quickrpc.proto";
 option go_package = "todo";
+option (quickrpc_package) = "{db:postgres}";
 package todo;
 
-extend google.protobuf.MessageOptions {
-  string tableName = 98765;
-}
+
 
 service TodoService {
   rpc CreateTodo(Todo) returns (Response) {}
 }
 
 message Todo {
-  option (tableName) = "todo";
+  option (quickrpc_message) = "{tableName:rock,crud:true,serviceImpl:true}";
   string message = 1;
 }
 

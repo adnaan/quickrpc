@@ -9,9 +9,19 @@ import (
 
 func main() {
 
-	// Create an *exec.Cmd
-	cmd := exec.Command("echo", "Called from Go!")
+	runProtoc()
 
+}
+
+func runProtoc() {
+	os.Chdir("test")
+	execCMD("mkdir", "-p", "todo")
+	execCMD("protoc", "-I../", "-I.", "--go_out=plugins=grpc+qr:todo", "todo.proto")
+}
+
+func execCMD(name string, args ...string) {
+
+	cmd := exec.Command(name, args...)
 	// Combine stdout and stderr
 	printCommand(cmd)
 	output, err := cmd.CombinedOutput()

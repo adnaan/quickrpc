@@ -1,7 +1,5 @@
 package main
 
-//go:generate mkdir -p todo
-//go:generate protoc --go_out=plugins=grpc+qr:todo todo.proto
 import (
 	"log"
 	"net"

@@ -17,7 +17,8 @@ package todo
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import google_protobuf "google/protobuf"
+
+// discarding unused import quickrpc "."
 
 import (
 	context "golang.org/x/net/context"
@@ -49,18 +50,6 @@ type Response struct {
 func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
-
-var E_TableName = &proto.ExtensionDesc{
-	ExtendedType:  (*google_protobuf.MessageOptions)(nil),
-	ExtensionType: (*string)(nil),
-	Field:         98765,
-	Name:          "todo.tableName",
-	Tag:           "bytes,98765,opt,name=tableName",
-}
-
-func init() {
-	proto.RegisterExtension(E_TableName)
-}
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
@@ -132,4 +121,4 @@ func (s *Server) CreateTodo(context.Context, *Todo) (*Response, error) {
 	return &Response{}, nil
 }
 
-// Message name: Todo options 98765:"test"
+// Generate sql queries: Todo options 98766:"{tableName:rock,crud:true,serviceImpl:true}"
