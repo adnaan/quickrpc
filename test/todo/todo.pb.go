@@ -120,5 +120,3 @@ type Server struct {
 func (s *Server) CreateTodo(context.Context, *Todo) (*Response, error) {
 	return &Response{}, nil
 }
-
-// Generate sql queries: Todo optSlice [98766 "{tableName:todo,crud:true,serviceImpl:true}" ]
