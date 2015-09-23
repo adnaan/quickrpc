@@ -121,4 +121,4 @@ func (s *Server) CreateTodo(context.Context, *Todo) (*Response, error) {
 	return &Response{}, nil
 }
 
-// Generate sql queries: Todo options 98766:"{tableName:rock,crud:true,serviceImpl:true}"
+// Generate sql queries: Todo optSlice [98766 "{tableName:todo,crud:true,serviceImpl:true}" ]

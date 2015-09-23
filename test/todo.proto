@@ -11,7 +11,7 @@ service TodoService {
 }
 
 message Todo {
-  option (quickrpc_message) = "{tableName:rock,crud:true,serviceImpl:true}";
+  option (quickrpc_message) = "{tableName:todo,crud:true,serviceImpl:true}";
   string message = 1;
 }
 

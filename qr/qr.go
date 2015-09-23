@@ -1,6 +1,7 @@
 package qr
 
 import (
+	"fmt"
 	"path"
 	"strconv"
 	"strings"
@@ -12,6 +13,12 @@ import (
 const (
 	qrSQLPkgPath = "github.com/adnaan/quickrpc/sql"
 )
+
+type quickRPCMessageOptions struct {
+	tableName   string
+	crud        bool
+	serviceImpl bool
+}
 
 func init() {
 	generator.RegisterPlugin(new(qr))
@@ -70,9 +77,13 @@ func (q *qr) Generate(file *generator.FileDescriptor) {
 
 		options := message.GetOptions()
 		if options != nil {
-			q.P()
-			q.P("// Generate sql queries: ", name, " options ", options.String())
-			q.P()
+			optStr := options.String()
+			if strings.Contains(optStr, "98766") {
+				optSlice := strings.SplitN(optStr, ":", 2)
+				q.P()
+				q.P("// Generate sql queries: ", name, " optSlice ", fmt.Sprintf("%v", optSlice))
+				q.P()
+			}
 
 		}
 
