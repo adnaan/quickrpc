@@ -117,6 +117,8 @@ var _TodoService_serviceDesc = grpc.ServiceDesc{
 type Server struct {
 }
 
-func (s *Server) CreateTodo(context.Context, *Todo) (*Response, error) {
+func (s *Server) CreateTodo(ctx context.Context, in *Todo) (*Response, error) {
 	return &Response{}, nil
 }
+
+// Generate sql queries: Todo optSlice [98766 "{tableName:todo,crud:true,serviceImpl:true}" ]

@@ -9,3 +9,7 @@ extend google.protobuf.FileOptions {
 extend google.protobuf.MessageOptions {
   string quickrpc_message = 98766;
 }
+
+extend google.protobuf.FieldOptions {
+  string quickrpc_field = 98767;
+}

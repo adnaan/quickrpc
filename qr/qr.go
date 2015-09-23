@@ -139,11 +139,11 @@ func (q *qr) generateMethodSignature(servName string, method *pb.MethodDescripto
 	var reqArgs []string
 	ret := "error"
 	if !method.GetServerStreaming() && !method.GetClientStreaming() {
-		reqArgs = append(reqArgs, contextPkg+".Context")
+		reqArgs = append(reqArgs, "ctx "+contextPkg+".Context")
 		ret = "(*" + q.typeName(method.GetOutputType()) + ", error)"
 	}
 	if !method.GetClientStreaming() {
-		reqArgs = append(reqArgs, "*"+q.typeName(method.GetInputType()))
+		reqArgs = append(reqArgs, "in "+"*"+q.typeName(method.GetInputType()))
 	}
 	if method.GetServerStreaming() || method.GetClientStreaming() {
 		reqArgs = append(reqArgs, servName+"_"+generator.CamelCase(origMethName)+"Server")

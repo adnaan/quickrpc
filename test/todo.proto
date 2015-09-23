@@ -11,8 +11,8 @@ service TodoService {
 }
 
 message Todo {
-  option (quickrpc_message) = "{tableName:todo,crud:true,serviceImpl:true}";
-  string message = 1;
+  option (quickrpc_message) = "{type:table,name:todo,crud:true,serviceImpl:true}";
+  string message = 1 [(quickrpc_field)= "{update:true}"];
 }
 
 message Response {
