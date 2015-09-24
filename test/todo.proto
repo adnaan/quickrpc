@@ -1,18 +1,33 @@
 syntax = "proto3";
 import "quickrpc.proto";
 option go_package = "todo";
-option (quickrpc_package) = "{db:postgres}";
+option (quickrpc_package) = "{db:rethinkdb}";
 package todo;
 
 
 
 service TodoService {
   rpc CreateTodo(Todo) returns (Response) {}
+  rpc GetTodos(TodoQuery) returns (stream Todo) {}
+  rpc UpdateTodos(UpdateTodoRequest) returns (Response) {}
+  rpc DeleteTodo(DeleteTodoRequest) returns (Response) {}
 }
 
 message Todo {
   option (quickrpc_message) = "{type:table,name:todo,crud:true,serviceImpl:true}";
-  string message = 1 [(quickrpc_field)= "{update:true}"];
+  string message = 1 [(quickrpc_field)= "{update:true,required:true}"];
+}
+
+message TodoQuery {
+  option (quickrpc_message) = "{type:table,name:todo,crud:true,serviceImpl:true}";
+}
+
+message UpdateTodoRequest {
+  option (quickrpc_message) = "{type:table,name:todo,crud:true,serviceImpl:true}";
+}
+
+message DeleteTodoRequest {
+  option (quickrpc_message) = "{type:table,name:todo,crud:true,serviceImpl:true}";
 }
 
 message Response {
